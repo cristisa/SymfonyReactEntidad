@@ -26,6 +26,11 @@ class Categor
         $this->relacionReceta = new ArrayCollection();
     }
 
+    public function __toString()
+    {
+        return $this->getNombreCategoria();
+    }
+
     public function getId(): ?int
     {
         return $this->id;

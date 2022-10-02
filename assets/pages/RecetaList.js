@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import Layout from "../components/Layout"
 import Swal from 'sweetalert2'
 import axios from 'axios';
+import '../styles/app.css';
+import '../styles/app.scss';
  
 function RecetaList() {
     const  [recetaList, setRecetaList] = useState([])
@@ -71,7 +73,6 @@ function RecetaList() {
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
-                                    <th>Autor</th>
                                     <th>Imagen</th>
                                     <th width="300px">Acciones</th>
                                 </tr>
@@ -81,18 +82,12 @@ function RecetaList() {
                                     return (
                                         <tr key={key}>
                                             <td>{receta.nombreReceta}</td>
-                                            <td>{receta.autor}</td>
                                             <td>{receta.imagen}</td>
                                             <td>
                                                 <Link
                                                     to={`/show/${receta.id}`}
                                                     className="btn btn-outline-info mx-1">
                                                     Mostrar
-                                                </Link>
-                                                <Link
-                                                    className="btn btn-outline-success mx-1"
-                                                    to={`/edit/${receta.id}`}>
-                                                    Editar
                                                 </Link>
                                                 <button 
                                                     onClick={()=>handleDelete(receta.id)}

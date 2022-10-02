@@ -22,6 +22,12 @@ Encore
      */
     .addEntry('app', './assets/app.js')
 
+    /* Para agregar hojas de estilo */
+    
+    .addStyleEntry('app/css', './assets/styles/app.css')
+
+    .addStyleEntry('app/scss', './assets/styles/app.scss')
+
     // enables the Symfony UX Stimulus bridge (used in assets/bootstrap.js)
     .enableStimulusBridge('./assets/controllers.json')
 
@@ -57,7 +63,7 @@ Encore
     })
 
     // enables Sass/SCSS support
-    //.enableSassLoader()
+    .enableSassLoader()
 
     // uncomment if you use TypeScript
     //.enableTypeScriptLoader()
@@ -74,3 +80,37 @@ Encore
 ;
 
 module.exports = Encore.getWebpackConfig();
+
+module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          "style-loader",
+          {
+            loader: "css-loader",
+            options: {
+              importLoaders: 1,
+              modules: true,
+            },
+          },
+        ],
+        include: /\.module\.css$/,
+      },
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+        exclude: /\.module\.css$/,
+      },
+      {test: /\.s[ac]ss$/i,
+      use: [
+        // Creates `style` nodes from JS strings
+        "style-loader",
+        // Translates CSS into CommonJS
+        "css-loader",
+        // Compiles Sass to CSS
+        "sass-loader",
+      ],
+    }
+    ]
+  }

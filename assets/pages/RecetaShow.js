@@ -27,6 +27,12 @@ function RecetaShow() {
                             className="btn btn-outline-info float-right"
                             to="/"> Todas las recetas
                         </Link>
+                        <Link
+                            className="btn btn-outline-success mx-1"
+                            to={`/edit/${receta.id}`}>
+                            Editar
+                        </Link>
+
                     </div>
                     <div className="card-body">
                         <b className="text-muted">Nombre</b>
