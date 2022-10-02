@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import Layout from "../components/Layout"
 import Swal from 'sweetalert2'
 import axios from 'axios';
-import '../styles/app.css';
 import '../styles/app.scss';
  
 function RecetaList() {

@@ -6,8 +6,10 @@ import RecetaList from "./pages/RecetaList";
 import RecetaCreate from "./pages/RecetaCreate";
 import RecetaEdit from "./pages/RecetaEdit";
 import RecetaShow from "./pages/RecetaShow";
+
 import './styles/app.css';
 import './styles/app.scss';
+
     
 function Main() {
     return (
