@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\RecetaRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: RecetaRepository::class)]
@@ -27,6 +29,14 @@ class Receta
 
     #[ORM\Column(length: 200, nullable: true)]
     private ?string $imagen = null;
+
+    #[ORM\ManyToMany(targetEntity: Categor::class, inversedBy: 'relacionReceta')]
+    private Collection $relacion;
+
+    public function __construct()
+    {
+        $this->relacion = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -89,6 +99,30 @@ class Receta
     public function setImagen(?string $imagen): self
     {
         $this->imagen = $imagen;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Categor>
+     */
+    public function getRelacion(): Collection
+    {
+        return $this->relacion;
+    }
+
+    public function addRelacion(Categor $relacion): self
+    {
+        if (!$this->relacion->contains($relacion)) {
+            $this->relacion->add($relacion);
+        }
+
+        return $this;
+    }
+
+    public function removeRelacion(Categor $relacion): self
+    {
+        $this->relacion->removeElement($relacion);
 
         return $this;
     }

@@ -59,7 +59,7 @@ class RecetaController extends AbstractController
         $entityManager->persist($receta);
         $entityManager->flush();
    
-        return $this->json('Created new receta successfully with id ' . $receta->getId());
+        return $this->json('Agregada nueva receta con el id: ' . $receta->getId());
     }
    
     /**
@@ -95,7 +95,7 @@ class RecetaController extends AbstractController
         $receta = $entityManager->getRepository(Receta::class)->find($id);
    
         if (!$receta) {
-            return $this->json('No receta found for id' . $id, 404);
+            return $this->json('No se encontró una receta con el id:' . $id, 404);
         }
          
         $content = json_decode($request->getContent());
@@ -128,12 +128,12 @@ class RecetaController extends AbstractController
         $receta = $entityManager->getRepository(Receta::class)->find($id);
    
         if (!$receta) {
-            return $this->json('No receta found for id' . $id, 404);
+            return $this->json('No se encontró una receta con el id:' . $id, 404);
         }
    
         $entityManager->remove($receta);
         $entityManager->flush();
    
-        return $this->json('Deleted a receta successfully with id ' . $id);
+        return $this->json('Receta eliminada exitosamente, id: ' . $id);
     }
 }
