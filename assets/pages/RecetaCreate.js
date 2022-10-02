@@ -10,9 +10,18 @@ function RecetaCreate() {
     const [procedimientos, setProcedimientos] = useState('');
     const [autor, setAutor] = useState('');
     const [imagen, setImagen] = useState('');
-
+    
+    // El archivo
+    //const selectedFile = useRef();
+    
     const [isSaving, setIsSaving] = useState(false)
   
+    // const uploader = async () => {
+    //     if (imagen)
+        
+    
+    // } 
+
     const handleSave = () => {
         setIsSaving(true);
         let formData = new FormData()
@@ -106,14 +115,15 @@ function RecetaCreate() {
                             </div>
                             <div className="form-group">
                                 <label htmlFor="imagen">Imagen</label>
-                                <textarea 
+                                <input 
                                     value={imagen}
                                     onChange={(event)=>{setImagen(event.target.value)}}
                                     className="form-control"
+                                    type="file"
                                     id="imagen"
                                     rows="3"
                                     name="imagen">
-                                </textarea>
+                                </input>
                             </div>
                             <button 
                                 disabled={isSaving}
