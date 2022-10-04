@@ -88,6 +88,7 @@ function RecetaList() {
                                                     className="btn btn-outline-info mx-1">
                                                     Mostrar
                                                 </Link>
+                                            
                                                 <button 
                                                     onClick={()=>handleDelete(receta.id)}
                                                     className="btn btn-outline-danger mx-1">
