@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, { useState, useForm } from 'react';
 import { Link } from "react-router-dom";
 import Layout from "../components/Layout"
 import Swal from 'sweetalert2'
 import axios from 'axios';
+
   
 function RecetaCreate() {
     const [nombreReceta, setNombreReceta] = useState('');
@@ -10,26 +11,19 @@ function RecetaCreate() {
     const [procedimientos, setProcedimientos] = useState('');
     const [autor, setAutor] = useState('');
     const [imagen, setImagen] = useState('');
-    
-    // El archivo
-    //const selectedFile = useRef();
-    
+      
     const [isSaving, setIsSaving] = useState(false)
-  
-    // const uploader = async () => {
-    //     if (imagen)
-        
-    
-    // } 
 
+    
     const handleSave = () => {
-        setIsSaving(true);
-        let formData = new FormData()
-        formData.append("nombreReceta", nombreReceta)
-        formData.append("ingredientes", ingredientes)
-        formData.append("procedimientos", procedimientos)
-        formData.append("autor", autor)
-        formData.append("imagen", imagen)
+      setIsSaving(true);
+      let formData = new FormData()
+      formData.append("nombreReceta", nombreReceta)
+      formData.append("ingredientes", ingredientes)
+      formData.append("procedimientos", procedimientos)
+      formData.append("autor", autor)
+      formData.append("imagen", imagen)
+
 
         axios.post('/api/receta', formData)
           .then(function (response) {
@@ -113,18 +107,20 @@ function RecetaCreate() {
                                     name="autor">
                                 </textarea>
                             </div>
+
                             <div className="form-group">
                                 <label htmlFor="imagen">Imagen</label>
                                 <input 
                                     value={imagen}
                                     onChange={(event)=>{setImagen(event.target.value)}}
                                     className="form-control"
-                                    type="file"
                                     id="imagen"
+                                    type="file"
                                     rows="3"
                                     name="imagen">
                                 </input>
                             </div>
+                
                             <button 
                                 disabled={isSaving}
                                 onClick={handleSave} 

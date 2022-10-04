@@ -68,7 +68,7 @@ function RecetaList() {
                     </div>
                     <div className="card-body">
               
-                        <table className="table table-bordered">
+                        <table className="table table-striped">
                             <thead>
                                 <tr>
                                     <th>Nombre</th>
@@ -81,7 +81,7 @@ function RecetaList() {
                                     return (
                                         <tr key={key}>
                                             <td>{receta.nombreReceta}</td>
-                                            <td>{receta.imagen}</td>
+                                            <td><img alt="brownie" src={"./img/brownie.png"} width="80" /></td>
                                             <td>
                                                 <Link
                                                     to={`/show/${receta.id}`}
